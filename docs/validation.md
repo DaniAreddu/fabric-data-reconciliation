@@ -1,6 +1,6 @@
 # Validation report
 
-What was checked before publishing v1.0.0, with the commands used and their results. Checks that were not possible are listed as such.
+What was checked when the repository and its first releases were published, with the commands used and their results. Checks that were not possible are listed as such.
 
 ## Starting materials
 
@@ -54,9 +54,24 @@ The tests cover English normalisation with preserved originals; missing, malform
 
 `python scripts/check_repo.py --external` requested the 33 external links in the documentation. 30 answered with HTTP 200. The other three:
 
-- the CI badge returned 404 because the repository did not exist yet at the time of the check;
+- the CI badge returned 404 because the repository did not exist yet at the time of the check; after publication it returns 200 and shows "passing";
 - `github.com/microsoft/fabric-samples/blob/main/docs-samples/Icons.zip` returned 503; the file exists (30,368,623 bytes, checked through the GitHub API), and the page times out for large binaries;
 - the LinkedIn profile returned 999, LinkedIn's usual answer to automated requests.
+
+## Publication checks
+
+The repository was created as public at <https://github.com/DaniAreddu/fabric-data-reconciliation> with default branch `main`, issues enabled and the description and topics set. GitHub detects the MIT license.
+
+**CI.** The first push ran the workflow on Ubuntu with Python 3.10.22 and 3.13.16 and on Windows with Python 3.13.15. All three jobs passed, each running 53 tests, the reference comparison and the repository checks. CI also passed on the `v1.0.0` tag.
+
+**v1.0.0, checked as a participant would.** From a new folder, with no stored credentials:
+
+- `git clone https://github.com/DaniAreddu/fabric-data-reconciliation.git`, then `python reference.py`, `python -m unittest discover -s tests` and `python scripts/check_repo.py`: all passed, and the working tree stayed clean.
+- The repository page, the release page and the GitHub API answered without authentication; the API reports the repository as public.
+- All eight release attachments were downloaded anonymously, and `sha256sum -c SHA256SUMS.txt` reported OK for each.
+- The downloaded PPTX has 40 slides and its notes equal the Extended speech, with no URL in any note; the downloaded PDF has 40 pages containing every slide's text.
+
+**Defect found and fixed.** The v1.0.0 materials ZIP left out the decks, which were attached separately. Run from the extracted ZIP, the deck test failed and the README links to the PPTX and PDF were broken. `scripts/check_repo.py` also reported the `__pycache__/` and `output/` folders created by running the tests, because outside Git it walked every file. Both were corrected on `main`: the ZIP now contains the whole repository at the release commit, the check skips the folders `.gitignore` excludes, and CI builds the ZIP, extracts it and runs all checks from the extracted copy. The fix is released as v1.0.1. The v1.0.0 tag was not moved, and its release notes point to v1.0.1.
 
 ## Not verified
 
