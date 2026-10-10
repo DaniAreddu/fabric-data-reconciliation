@@ -1,0 +1,5 @@
+source_key,original_name,area_type,street_link,status
+MAG:ODN:000184,A. Celi Street,Street,,CANDIDATE
+TOP:STR:000531,Adolfo Celi Street,Street,,REFERENCE
+OFF:ROW:000009,Adolfo Celi Square,Square,,TYPE_CONFLICT
+MAG:ODN:000184,A. Celi Street,Street,TOP:STR:000531,VALIDATED_LOCAL_TARGET_PENDING

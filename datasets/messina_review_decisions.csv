@@ -1,0 +1,2 @@
+source_key,candidate_key,decision_scope,decision,evidence_reference,evidence_description,reviewer,status
+MAG:ODN:000184,TOP:STR:000531,STREET_LINK,APPROVE,REF-CELI-01,Synthetic source-to-street reference check; not a production record,demo_operator,VALIDATED_LOCAL_TARGET_PENDING
