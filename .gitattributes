@@ -1,0 +1,19 @@
+# Text files are stored and checked out with LF so that expected outputs
+# compare byte for byte on every platform.
+* text=auto eol=lf
+
+*.py     text diff=python
+*.md     text diff=markdown
+*.json   text
+*.csv    text
+*.ipynb  text
+*.mmd    text
+*.yml    text
+*.svg    text
+
+*.pptx   binary
+*.pdf    binary
+*.png    binary
+*.jpg    binary
+*.ttf    binary
+*.zip    binary

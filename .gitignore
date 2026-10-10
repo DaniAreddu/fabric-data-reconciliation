@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.python-version
+
+# Local outputs of reference.py and release packaging
+output/
+dist/
+
+# Notebook and editor state
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# Office lock files and OS clutter
+~$*
+.~lock.*#
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Credentials and local configuration
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+*.log
