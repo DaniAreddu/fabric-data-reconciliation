@@ -1,6 +1,6 @@
 # Contributing
 
-Corrections, questions and better examples are welcome. This repository accompanies a conference session, so the most useful contributions keep the example small and every decision explainable.
+Corrections and questions are welcome. Keep the example small enough that every decision can be traced by hand.
 
 ## Run the checks
 
@@ -12,7 +12,7 @@ python -m unittest discover -s tests
 python scripts/check_repo.py
 ```
 
-`reference.py` writes its results to `output/` and fails if they differ from the versioned files in `expected/`. The tests cover the decision rules, the notebook's structure and the talk materials. `check_repo.py` checks links, file hygiene and the diagram sources. CI runs the same three commands; none of them needs Fabric or any credential.
+`reference.py` writes its results to `output/` and fails if they differ from the versioned files in `expected/`. The tests cover the decision rules, the notebook's structure, the slides PDF and the Messina data files. `check_repo.py` checks links, file hygiene and the diagram sources. CI runs the same three commands, also from an extracted `git archive` of the commit; none of them needs Fabric or any credential.
 
 ## Reporting a problem
 
@@ -43,7 +43,7 @@ A rule change usually moves several things at once. Make them move together, in 
 
 CI never rewrites `expected/`. A pull request whose output differs from the committed files fails until the new expected files are committed with an explanation.
 
-The slides and speeches describe the published rule version `recon-demo-v2-en`. A change to the rules makes them out of date; say so in the pull request rather than editing the decks.
+The slides describe rule version `recon-demo-v2-en` and are not generated from this repository. If a rule change makes them out of date, say so in the pull request.
 
 ## Changing data
 
