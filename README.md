@@ -102,7 +102,7 @@ Pick two sources. Keep their original keys. Label a small set of pairs, includin
 
 ## What has been verified
 
-The local reference, 53 unit tests and the repository checks pass on Python 3.10 to 3.14 and run in CI on every push. The notebook is checked structurally: valid format, every code cell compiles, and its rules are identical to `reference.py`. It has not been run in a Fabric workspace for this repository, and the expected results come from the local reference. The [validation report](docs/validation.md) lists the commands and their results.
+The local reference, the unit tests and the repository checks pass on Python 3.10 to 3.14 and run in CI on every push. The notebook is checked structurally: valid format, every code cell compiles, and its rules are identical to `reference.py`. It has not been run in a Fabric workspace for this repository, and the expected results come from the local reference. The [validation report](docs/validation.md) lists the commands and their results.
 
 ## Further reading
 
