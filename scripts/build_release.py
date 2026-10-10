@@ -4,7 +4,7 @@
     python scripts/build_release.py --verify DIR    # checks DIR against its SHA256SUMS.txt
 
 The materials ZIP is made with `git archive`, so it contains exactly the committed
-files of HEAD. The decks are attached separately and left out of the ZIP.
+files of HEAD, decks included, and its own checks pass after extraction.
 """
 import argparse
 import hashlib
@@ -23,7 +23,6 @@ ATTACHMENTS = [
     'talks/extended/Sofia_2026_English_Extended_Speech.md',
     'talks/extended/Sofia_2026_English_Extended_Timing.md',
 ]
-LEFT_OUT_OF_ZIP = ['presentations/*.pptx', 'presentations/Sofia_*.pdf']
 
 
 def sha256(path):
@@ -49,8 +48,7 @@ def build(version):
         # Take each attachment from HEAD, not from the working tree.
         (out / Path(name).name).write_bytes(git('show', 'HEAD:' + name))
     archive = out / ('fabric-data-reconciliation-%s-materials.zip' % version)
-    git('archive', '--format=zip', '--prefix=fabric-data-reconciliation-%s/' % version, '-o', str(archive),
-        'HEAD', '--', '.', *(':(exclude,glob)' + p for p in LEFT_OUT_OF_ZIP))
+    git('archive', '--format=zip', '--prefix=fabric-data-reconciliation-%s/' % version, '-o', str(archive), 'HEAD')
     files = sorted(p for p in out.iterdir() if p.name != 'SHA256SUMS.txt')
     (out / 'SHA256SUMS.txt').write_text(''.join('%s  %s\n' % (sha256(p), p.name) for p in files),
                                         encoding='utf-8', newline='\n')
