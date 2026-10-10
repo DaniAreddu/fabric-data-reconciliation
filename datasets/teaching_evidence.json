@@ -1,0 +1,27 @@
+{
+  "status": "Synthetic teaching evidence. Neither reference is a production document.",
+  "loaded_by_notebook": false,
+  "references": [
+    {
+      "reference": "REF-CELI-01",
+      "object": "STREET",
+      "source_key": "MAG:ODN:000184",
+      "candidate_key": "TOP:STR:000531",
+      "checked_assertion": "The source-to-street reference table associates these keys with the same registered street, Adolfo Celi Street.",
+      "check_scope": "STREET_LINK_ONLY",
+      "decision": "APPROVE",
+      "reviewer": "demo_operator",
+      "not_evidence_for": "A civic-level address merge or a real SIMEL integration contract."
+    },
+    {
+      "reference": "ONB-DELTA-42",
+      "object": "COMPANY",
+      "source_key": "CRM:C103",
+      "candidate_key": "ERP:E503",
+      "checked_assertion": "The onboarding reference associates CRM:C103 with company DEMO-003; ERP:E503 carries the same stipulated reliable company ID.",
+      "decision": "APPROVE",
+      "reviewer": "demo_reviewer",
+      "not_evidence_for": "Either portal candidate pair. PORTAL:P902 remains unresolved."
+    }
+  ]
+}

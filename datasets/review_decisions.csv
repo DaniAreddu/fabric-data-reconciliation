@@ -1,0 +1,2 @@
+pair_key,decision,reviewer,reviewed_at,evidence_reference,rule_version,evidence_fingerprint
+CRM:C103|ERP:E503,APPROVE,demo_reviewer,2026-10-08T10:00:00Z,ONB-DELTA-42,recon-demo-v2-en,b5bc78d19281df0e76767c60005ee81118d716e3137b4ba49ce2f2110def6041

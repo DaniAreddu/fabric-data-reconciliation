@@ -1,0 +1,4 @@
+node,source_key,business_id,proposed_next_link
+A,CRM:A,DEMO-002,ERP:B
+B,ERP:B,,PORTAL:C
+C,PORTAL:C,DEMO-009,
