@@ -73,6 +73,8 @@ The repository was created as public at <https://github.com/DaniAreddu/fabric-da
 
 **Defect found and fixed.** The v1.0.0 materials ZIP left out the decks, which were attached separately. Run from the extracted ZIP, the deck test failed and the README links to the PPTX and PDF were broken. `scripts/check_repo.py` also reported the `__pycache__/` and `output/` folders created by running the tests, because outside Git it walked every file. Both were corrected on `main`: the ZIP now contains the whole repository at the release commit, the check skips the folders `.gitignore` excludes, and CI builds the ZIP, extracts it and runs all checks from the extracted copy. The fix is released as v1.0.1. The v1.0.0 tag was not moved, and its release notes point to v1.0.1.
 
+**v1.0.1, checked after release.** The same steps were repeated from a new folder without credentials: the anonymous clone passed `reference.py`, the 53 tests and `check_repo.py` with a clean working tree; the eight attachments of the latest release matched `SHA256SUMS.txt`; and the extracted `fabric-data-reconciliation-v1.0.1-materials.zip` passed the same three checks. Apart from the ZIP, its attachments have the same hashes as in v1.0.0. GitHub renders the Mermaid diagrams in the README and documentation pages, and the images they reference resolve.
+
 ## Not verified
 
 - No run of the notebook in a Fabric workspace, and no Fabric screenshots or outputs.
