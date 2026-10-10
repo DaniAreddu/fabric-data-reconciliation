@@ -43,12 +43,13 @@ jobs:
       - name: Versioned results were not modified
         run: git diff --exit-code -- expected/
 
-      - name: Release ZIP passes its own checks
+      # GitHub's source archives are made with git archive; check that an extracted one works.
+      - name: Source archive passes its own checks
         shell: bash
         run: |
-          python scripts/build_release.py ci-check
-          python -m zipfile -e dist/ci-check/fabric-data-reconciliation-ci-check-materials.zip "$RUNNER_TEMP/zip"
-          cd "$RUNNER_TEMP/zip/fabric-data-reconciliation-ci-check"
+          git archive --format=zip --prefix=archive/ -o "$RUNNER_TEMP/source.zip" HEAD
+          python -m zipfile -e "$RUNNER_TEMP/source.zip" "$RUNNER_TEMP"
+          cd "$RUNNER_TEMP/archive"
           python reference.py
           python -m unittest discover -s tests
           python scripts/check_repo.py
