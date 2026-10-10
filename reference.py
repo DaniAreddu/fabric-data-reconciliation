@@ -243,16 +243,43 @@ def checks(rows, reviews):
 
 
 def main():
+    # Kept below the shared functions: the notebook embeds everything above main().
+    import argparse
     base = Path(__file__).parent
+    expected = base / 'expected'
+    parser = argparse.ArgumentParser(description='Run the reference checks, write B001/B002 results '
+                                     'and compare them with the versioned files in expected/.')
+    parser.add_argument('--output-dir', type=Path, default=base / 'output',
+                        help='folder for the generated JSON files (default: output/). '
+                             'Pass expected/ only when a rule change is meant to update the versioned results.')
+    out = parser.parse_args().output_dir
     rows = load_inputs(base / 'datasets')
-    reviews = list(csv.DictReader((base / 'datasets/review_decisions.csv').open(newline='')))
+    with (base / 'datasets/review_decisions.csv').open(newline='') as f:
+        reviews = list(csv.DictReader(f))
     before, after = checks(rows, reviews)
-    out = base / 'expected'
-    out.mkdir(exist_ok=True)
+    out.mkdir(parents=True, exist_ok=True)
+    regenerating = out.resolve() == expected.resolve()
+    different = []
     for name, data in [('B001', before), ('B002', after)]:
-        (out / (name + '_results.json')).write_text(json.dumps(data, indent=2))
+        filename = name + '_results.json'
+        text = json.dumps(data, indent=2)
+        with (out / filename).open('w', encoding='utf-8', newline='\n') as f:
+            f.write(text)
+        if not regenerating and (expected / filename).read_text(encoding='utf-8') != text:
+            different.append(filename)
     print(json.dumps(before['metrics'], indent=2))
     print('Checks passed: routing, null IDs, conflict override, stale review, group guard, rerun and update.')
+    if regenerating:
+        print('Rewrote expected/. Review the diff and explain the rule change before committing it.')
+    elif different:
+        print('Generated output differs from expected/: ' + ', '.join(different))
+        raise SystemExit(1)
+    else:
+        try:
+            shown = out.resolve().relative_to(base.resolve())
+        except ValueError:
+            shown = out
+        print('Generated B001 and B002 results match expected/ (written to %s).' % shown.as_posix())
 
 if __name__ == '__main__':
     main()
