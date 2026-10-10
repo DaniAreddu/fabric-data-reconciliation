@@ -1,0 +1,20 @@
+[
+  {
+    "record_id": "P901",
+    "company_name": "Alfa",
+    "business_id": "DEMO-001",
+    "address": "Roma Street 10",
+    "postcode": "98100",
+    "city": "Messina",
+    "source_updated_at": "2026-10-07T07:00:00Z"
+  },
+  {
+    "record_id": "P902",
+    "company_name": "Delta Service",
+    "business_id": "",
+    "address": "Port Street 5",
+    "postcode": "98122",
+    "city": "Messina",
+    "source_updated_at": "2026-10-07T07:00:00Z"
+  }
+]

@@ -1,0 +1,5 @@
+record_id,company_name,business_id,address,postcode,city,source_updated_at
+C101,Alfa Ltd,DEMO-001,Roma Street 12,98100,Messina,2026-10-07T08:00:00Z
+C102,Aurora Consulting,DEMO-002,Verdi Street 8,98121,Messina,2026-10-07T08:00:00Z
+C103,Delta Services,,Port Street 5,98122,Messina,2026-10-07T08:00:00Z
+C104,Nova Travel,,Milan Street 4,00100,Rome,2026-10-07T08:00:00Z

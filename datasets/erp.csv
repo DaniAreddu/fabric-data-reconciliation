@@ -1,0 +1,4 @@
+record_id,company_name,business_id,address,postcode,city,source_updated_at
+E501,ALFA LTD,DEMO-001,"Roma St., 12",98100,Messina,2026-10-07T08:30:00Z
+E502,Aurora Consulting,DEMO-009,Verdi Street 8,98121,Messina,2026-10-07T08:30:00Z
+E503,Delta Services,DEMO-003,Port Street 5,98122,Messina,2026-10-07T08:30:00Z
