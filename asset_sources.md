@@ -4,7 +4,7 @@ This file records where each dataset, piece of evidence and image comes from, wh
 
 ## What comes from the real project
 
-The talk starts from a real project for the Municipality of Messina. The following facts were supplied by the speaker, who worked on it:
+The examples start from a real project for the Municipality of Messina. Daniele Mario Areddu worked on it; the facts below are his account of the project:
 
 - street-name (odonym) reconciliation and territorial data management;
 - end-to-end architecture and full-stack development;
@@ -19,9 +19,9 @@ SIMEL is the municipal information system in the Maggioli context. The supplier 
 Everything else about Messina in this repository is a teaching reconstruction:
 
 - **Reference feed topology.** The diagram's other feeds (street register and toponymy, municipal public addresses, SITR/Geoportale Sicilia, cadastral extracts, office CSV/Excel exports) make the architecture concrete. They are not a statement that each one was integrated in the original project.
-- **Proposed patterns.** Confirmation that the destination applied an update, safe retry, idempotency and richer decision/audit states are integration patterns proposed in the talk. They are not described as part of the original implementation.
+- **Proposed patterns.** Confirmation that the destination applied an update, safe retry, idempotency and richer decision/audit states are integration patterns proposed in the slides and in [docs/messina.md](docs/messina.md). They are not described as part of the original implementation.
 - **Example records.** `MAG:ODN:000184`, `TOP:STR:000531`, `OFF:ROW:000009`, `CIV:ADR:012784` and their fields are invented namespaces and schemas. They are not SIMEL API contracts or project exports. Via Adolfo Celi exists in the municipal register; the abbreviated "A. Celi Street" and the "Adolfo Celi Square" variant illustrate disagreement. The materials do not claim that a Piazza Adolfo Celi exists, and the register checked on 10 October 2026 contains none.
-- **Impact scenarios.** Misdirected letters or fine notices, delayed services, unusable address links, wrong territorial context, altered counts and manual rework are possible consequences of bad links. They are not documented incidents, and the talk does not claim the platform operated those services.
+- **Impact scenarios.** Misdirected letters or fine notices, delayed services, unusable address links, wrong territorial context, altered counts and manual rework are possible consequences of bad links. They are not documented incidents, and the materials do not claim the platform operated those services.
 
 ## Evidence references
 
@@ -32,7 +32,7 @@ Everything else about Messina in this repository is a teaching reconstruction:
 
 ## Customer fixture
 
-The nine CRM, ERP and portal rows, the B002 update, the review decision and the pair labels describe invented companies (Alfa, Aurora, Delta, Nova). The fixture was translated to English for the Sofia edition: names, addresses and the `St.` → `Street` normalisation changed together with rule version `recon-demo-v2-en`, the saved review fingerprint and both expected result files. `DEMO-` identifiers are stipulated reliable company IDs for the exercise, not real registration numbers.
+The nine CRM, ERP and portal rows, the B002 update, the review decision and the pair labels describe invented companies (Alfa, Aurora, Delta, Nova) with English names and addresses. `DEMO-` identifiers are stipulated reliable company IDs for the exercise, not real registration numbers. The saved review fingerprint and the expected results correspond to these records under rule version `recon-demo-v2-en`.
 
 ## Public data
 
@@ -55,21 +55,22 @@ Other public sources used for context, not data:
 - [SITR, Regione Siciliana](https://www.sitr.regione.sicilia.it/): the regional territorial information system, named on slide 6 as a reference source. No screenshot or connection is claimed.
 - [Procurement record naming SIMEL2 and Maggioli services](https://trasparenza.adspmaresiciliaorientale.it/appalti-190/detail.aspx?app=799&tp1=40): supports the product name and its English expansion ("Multichannel Information System for Local Authorities") only.
 
-## Images and fonts
+## Images
 
 | File | Author or owner | Source | License | Use | Changes |
 |---|---|---|---|---|---|
-| `assets/messina.jpg` | Jeroen P | [Wikimedia Commons: Messina_Strait.jpg](https://commons.wikimedia.org/wiki/File:Messina_Strait.jpg) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | Slide 5; [docs/messina.md](docs/messina.md) | File unchanged; cover crop in the deck, with attribution on the slide |
-| `assets/microsoft-learn/lakehouse-official.png` | Microsoft | [Load data into your lakehouse with a notebook](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-notebook-load-data); [original image](https://raw.githubusercontent.com/MicrosoftDocs/fabric-docs/main/docs/data-engineering/media/lakehouse-notebook-explore/load-data-menu.png) | CC BY 4.0 (MicrosoftDocs/fabric-docs); no trademark rights | Slide 19; [docs/fabric-setup.md](docs/fabric-setup.md) | File unchanged; the deck crops it to the explorer with Files and Tables. Its sample table names are Microsoft's, not ours |
-| `assets/microsoft-learn/pipeline-settings-official.png` | Microsoft | [Notebook activity](https://learn.microsoft.com/en-us/fabric/data-factory/notebook-activity); [original image](https://raw.githubusercontent.com/MicrosoftDocs/fabric-docs/main/docs/data-factory/media/notebook-activity/notebook-connection-workspace-parameters.png) | CC BY 4.0 (MicrosoftDocs/fabric-docs); no trademark rights | Slide 20; [docs/fabric-setup.md](docs/fabric-setup.md) | File unchanged; the deck crops it around the Notebook activity settings. It does not show a pipeline built for this repository |
+| `assets/messina.jpg` | Jeroen P | [Wikimedia Commons: Messina_Strait.jpg](https://commons.wikimedia.org/wiki/File:Messina_Strait.jpg) | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) | Slide 5; [docs/messina.md](docs/messina.md) | File unchanged; cropped on the slide, with attribution |
+| `assets/microsoft-learn/lakehouse-official.png` | Microsoft | [Load data into your lakehouse with a notebook](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-notebook-load-data); [original image](https://raw.githubusercontent.com/MicrosoftDocs/fabric-docs/main/docs/data-engineering/media/lakehouse-notebook-explore/load-data-menu.png) | CC BY 4.0 (MicrosoftDocs/fabric-docs); no trademark rights | Slide 19; [docs/fabric-setup.md](docs/fabric-setup.md) | File unchanged; the slide crops it to the explorer with Files and Tables. Its sample table names are Microsoft's, not ours |
+| `assets/microsoft-learn/pipeline-settings-official.png` | Microsoft | [Notebook activity](https://learn.microsoft.com/en-us/fabric/data-factory/notebook-activity); [original image](https://raw.githubusercontent.com/MicrosoftDocs/fabric-docs/main/docs/data-factory/media/notebook-activity/notebook-connection-workspace-parameters.png) | CC BY 4.0 (MicrosoftDocs/fabric-docs); no trademark rights | Slide 20; [docs/fabric-setup.md](docs/fabric-setup.md) | File unchanged; the slide crops it around the Notebook activity settings. It does not show a pipeline built for this repository |
 | `assets/fabric-icons/*.svg` (Lakehouse, Notebook, OneLake, Pipeline, Semantic model) | Microsoft | [Fabric icons](https://learn.microsoft.com/en-us/fabric/fundamentals/icons), [Icons.zip](https://github.com/microsoft/fabric-samples/blob/main/docs-samples/Icons.zip) | MIT, `assets/fabric-icons/LICENSE.txt` | Slides 18 and 34, with names beside each icon | Unchanged colours and proportions |
-| `fonts/SourceSansPro-*.ttf` | Adobe | Source Sans Pro | SIL OFL 1.1, `fonts/LICENSE.md` | Deck typography (from the Sofia speaker template); embedded in the PDFs | Unchanged |
 
 The Microsoft images are authentic documentation screenshots. They explain where things are in the Fabric interface; none of them shows this notebook running.
 
-## Original visuals in the decks
+The slides PDF embeds subsets of Noto Sans (Google, SIL Open Font License 1.1).
 
-Created by the speaker as native, editable PowerPoint shapes and tables, and covered by CC BY 4.0:
+## Original visuals in the slides
+
+Drawn by Daniele Mario Areddu and covered by CC BY 4.0:
 
 - the operator comparison on slide 11, a reconstructed view with invented keys and states, not a screenshot of a production application;
 - the Bronze, review and Gold tables on slides 19, 31 and 34, built from the local reference results (table names omit the `recon_demo_` prefix for readability);
@@ -79,14 +80,12 @@ Created by the speaker as native, editable PowerPoint shapes and tables, and cov
 
 ## Elements not licensed here
 
-These appear inside the decks and are not extracted into `assets/`:
+These appear in the slides PDF and are not extracted into `assets/`:
 
 | Element | Origin | Status |
 |---|---|---|
-| Speaker portrait, contact icons and LinkedIn QR code (slides 2 and 40) | Speaker's earlier stage deck for Day of Data Toronto 2026 | Retained with their original links. The QR opens the speaker's LinkedIn profile, not this repository |
-| Data Saturdays Sofia logo, dark background and green accents | Data Saturdays Sofia 2026 speaker template | Event identity, used as provided by the organisers |
-
-An OpenStreetMap tile (© OpenStreetMap contributors) appeared in an earlier version of slide 9. It was removed from the final deck because its labels are Italian and is not distributed here.
+| Portrait, contact icons and LinkedIn QR code (slides 2 and 40) | Daniele Mario Areddu's slides for Day of Data Toronto 2026 | The QR code opens Daniele Mario Areddu's LinkedIn profile, not this repository |
+| Data Saturdays logo, dark background and green accents | Data Saturdays Sofia 2026 template | Event identity, used as provided by the organisers |
 
 ## Status of the materials
 
