@@ -1,6 +1,6 @@
 # References
 
-Primary sources used for the talk, the notebook and this documentation. Microsoft Learn pages were rechecked on 10 October 2026.
+Primary sources used for the talk, the notebook and this documentation. The Microsoft Learn pages on medallion architecture, notebooks, the Lakehouse explorer, troubleshooting, the Notebook activity and semantic models were re-read on 10 October 2026.
 
 ## Microsoft Fabric
 
