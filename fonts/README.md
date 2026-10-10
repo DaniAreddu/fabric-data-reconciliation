@@ -1,0 +1,1 @@
+Source Sans Pro Regular and Bold reproduce the Sofia template typography. Install on the presentation computer if absent. The supplied deck PDF embeds its fonts. Fonts are unmodified; copyright notices remain in their metadata. See LICENSE.md for SIL Open Font License 1.1.
