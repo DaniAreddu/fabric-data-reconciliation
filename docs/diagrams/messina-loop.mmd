@@ -1,0 +1,13 @@
+flowchart TB
+    maggioli["Maggioli / SIMEL<br/>operational street references"]
+    registers["Street and civic registers<br/>(reference architecture)"]
+    platform["Reconciliation platform<br/>PostgreSQL/PostGIS + FastAPI"]
+    operator["Operator review<br/>React/TypeScript interface"]
+    local["Validated link<br/>stored locally"]
+
+    maggioli -- "1. read references" --> platform
+    registers -- "supply comparable records" --> platform
+    platform -- "2. propose candidates with evidence" --> operator
+    operator -- "3. approve with an evidence reference" --> local
+    local -- "4. push validated link" --> maggioli
+    maggioli -. "5. confirm the update was applied (proposed, contract-dependent)" .-> local

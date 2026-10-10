@@ -1,0 +1,18 @@
+flowchart TB
+    pipeline(["Pipeline: Notebook activity<br/>(optional, not provided)"])
+    extracts["CRM, ERP and portal extracts<br/>Files/reconciliation_demo/datasets"]
+    bronze["Bronze: source snapshots<br/>recon_demo_bronze_snapshots"]
+    silver["Silver: comparison fields beside originals<br/>recon_demo_silver_records"]
+    candidates["Candidates and decisions<br/>recon_demo_match_pairs"]
+    review["Operator review<br/>datasets/review_decisions.csv"]
+    gold["Gold: customers and source links<br/>recon_demo_gold_customers, recon_demo_gold_source_links"]
+    consumers["Semantic model or separately built backend"]
+
+    pipeline -. "starts the notebook" .-> extracts
+    extracts -- "ingest batch, keep original fields" --> bronze
+    bronze -- "select latest snapshot, normalise" --> silver
+    silver -- "block, compare evidence, score" --> candidates
+    candidates -- "uncertain pairs go to the review queue" --> review
+    review -- "recorded decision returns to matching" --> candidates
+    candidates -- "supported groups are published" --> gold
+    gold -- "consumed by" --> consumers

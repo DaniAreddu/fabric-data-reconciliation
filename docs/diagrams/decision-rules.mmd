@@ -1,0 +1,30 @@
+flowchart TB
+    pair["Candidate pair"]
+    conflict{"Both company IDs usable<br/>and different?"}
+    shared{"Same usable<br/>company ID?"}
+    score{"Score of at least 70?<br/>name 60 + address 25 + postcode 15"}
+    reject["REJECT: keep separate<br/>Aurora, 100 points"]
+    auto["AUTO link<br/>Alfa"]
+    review["REVIEW<br/>Delta pairs"]
+    separate["KEEP_SEPARATE<br/>weak evidence"]
+    saved{"Saved decision with current fingerprint,<br/>rule version, reviewer and evidence?"}
+    approved["APPROVED<br/>CRM:C103 + ERP:E503"]
+    pending["Still in review<br/>pairs with PORTAL:P902"]
+    group{"Whole group free of ID conflicts<br/>and recorded rejections?"}
+    publish["Published in Gold"]
+    stop["GROUP_CONFLICT: not joined"]
+
+    pair --> conflict
+    conflict -- "yes" --> reject
+    conflict -- "no" --> shared
+    shared -- "yes" --> auto
+    shared -- "no: missing IDs add no evidence" --> score
+    score -- "yes" --> review
+    score -- "no" --> separate
+    review --> saved
+    saved -- "yes, APPROVE" --> approved
+    saved -- "no, stale or incomplete" --> pending
+    auto --> group
+    approved --> group
+    group -- "yes" --> publish
+    group -- "no" --> stop

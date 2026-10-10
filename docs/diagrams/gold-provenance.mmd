@@ -1,0 +1,17 @@
+flowchart TB
+    subgraph membership["Which source rows belong to the company? (gold_source_links)"]
+        c101["CRM:C101<br/>Alfa Ltd"]
+        e501["ERP:E501<br/>ALFA LTD"]
+        p901["PORTAL:P901<br/>Alfa"]
+    end
+    customer["CUS-a60635aa3160<br/>company ID DEMO-001"]
+    subgraph provenance["Where does each published value come from? (gold_customers)"]
+        name["display_name: Alfa Ltd<br/>name_source_key: CRM:C101"]
+        billing["billing_address: Roma St., 12<br/>billing_address_source_key: ERP:E501"]
+    end
+
+    c101 -- "maps to" --> customer
+    e501 -- "maps to" --> customer
+    p901 -- "maps to" --> customer
+    customer -- "publishes" --> name
+    customer -- "publishes" --> billing
