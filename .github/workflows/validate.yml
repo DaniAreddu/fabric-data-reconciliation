@@ -1,0 +1,44 @@
+name: Validate
+
+# Runs the same checks as CONTRIBUTING.md. No Fabric workspace or credentials are used.
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Python ${{ matrix.python }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: "3.10"
+          - os: ubuntu-latest
+            python: "3.13"
+          - os: windows-latest
+            python: "3.13"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Run the reference and compare with expected/
+        run: python reference.py
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Repository checks
+        run: python scripts/check_repo.py
+
+      - name: Versioned results were not modified
+        run: git diff --exit-code -- expected/
