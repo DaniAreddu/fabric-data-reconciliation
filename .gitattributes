@@ -17,3 +17,7 @@
 *.jpg    binary
 *.ttf    binary
 *.zip    binary
+
+# Dataset CSVs keep their original CRLF bytes. The public Messina sample
+# must stay identical to the municipal file, which uses CRLF.
+datasets/*.csv -text
