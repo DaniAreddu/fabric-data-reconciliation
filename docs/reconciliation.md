@@ -98,7 +98,7 @@ The Delta–portal score is 60 × (1 − 1/14) + 25 + 15: "delta services" and "
 
 The weights and the threshold are illustrative. The score measures how many fields agree under these rules. It is not the probability that two records describe the same company.
 
-## Three decisions to remember
+## Alfa, Aurora and Delta
 
 **Alfa: different text, same company.** The CRM says "Alfa Ltd, Roma Street 12", the ERP "ALFA LTD, Roma St., 12" and the portal "Alfa, Roma Street 10". The portal pairs score only 45, yet all three rows link because they carry the same reliable ID. Relying on the score alone would leave Alfa split. Which address to publish is a separate decision, made later and for a specific use.
 

@@ -1,10 +1,6 @@
 # The Messina project
 
-![The Strait of Messina seen from Messina](../assets/messina.jpg)
-
-*Messina Strait, photograph by Jeroen P, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Messina_Strait.jpg).*
-
-The talk starts from a real project: a territorial data platform for the Municipality of Messina, in Sicily. I led its architecture, development and production delivery. The platform reconciled odonyms (the names of streets and other circulation areas) and managed territorial data across five to six sources.
+The talk starts from a real project: a territorial data platform for the Municipality of Messina, in Sicily. Daniele Mario Areddu led its architecture, development and production delivery. The platform reconciled odonyms (the names of streets and other circulation areas) and managed territorial data across five to six sources.
 
 What the project involved, as far as this repository can state it:
 
