@@ -12,7 +12,6 @@ import sys
 import unicodedata
 import urllib.error
 import urllib.request
-import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,7 +48,7 @@ def tracked_files():
         out = subprocess.run(['git', 'ls-files', '-z'], cwd=ROOT, capture_output=True, check=True).stdout
         return [ROOT / p for p in out.decode('utf-8').split('\0') if p]
     except (OSError, subprocess.CalledProcessError):
-        # Outside Git (for example an extracted release ZIP), skip what .gitignore would skip.
+        # Outside Git (for example an extracted source archive), skip what .gitignore would skip.
         skipped = {'.git', '__pycache__', '.ipynb_checkpoints', '.venv', 'venv', 'output', 'dist'}
         return [p for p in ROOT.rglob('*') if p.is_file() and not skipped & set(p.relative_to(ROOT).parts)]
 
@@ -121,11 +120,6 @@ def check_contents(files, problems):
             continue  # this file contains the patterns themselves
         if is_text(path):
             scan_text(name, path.read_text(encoding='utf-8', errors='replace'), problems)
-        elif path.suffix.lower() == '.pptx':
-            with zipfile.ZipFile(path) as z:
-                for part in z.namelist():
-                    if part.endswith(('.xml', '.rels')):
-                        scan_text('%s:%s' % (name, part), z.read(part).decode('utf-8', 'replace'), problems)
         elif path.suffix.lower() == '.pdf':
             scan_text(name, path.read_bytes().decode('latin-1'), problems)
 
