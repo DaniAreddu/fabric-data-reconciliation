@@ -49,7 +49,9 @@ def tracked_files():
         out = subprocess.run(['git', 'ls-files', '-z'], cwd=ROOT, capture_output=True, check=True).stdout
         return [ROOT / p for p in out.decode('utf-8').split('\0') if p]
     except (OSError, subprocess.CalledProcessError):
-        return [p for p in ROOT.rglob('*') if p.is_file() and '.git' not in p.parts]
+        # Outside Git (for example an extracted release ZIP), skip what .gitignore would skip.
+        skipped = {'.git', '__pycache__', '.ipynb_checkpoints', '.venv', 'venv', 'output', 'dist'}
+        return [p for p in ROOT.rglob('*') if p.is_file() and not skipped & set(p.relative_to(ROOT).parts)]
 
 
 def rel(path):
